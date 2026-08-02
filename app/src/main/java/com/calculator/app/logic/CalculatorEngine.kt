@@ -56,8 +56,7 @@ object CalculatorEngine {
         return state
     }
 
-    private fun handleOperator(state: Ready, inputOp: CalculatorInput.Operator): Ready {
-        val op = inputOp.operator
+    private fun handleOperator(state: Ready, inputOp: Operator): Ready {
         if (state.pendingOperator != null && state.previousValue != null && state.isNewEntry.not()) {
             // Chain operations: calculate previous first
             val result = calculate(
@@ -70,13 +69,13 @@ object CalculatorEngine {
             return Ready(
                 displayValue = formatResult(resultValue),
                 previousValue = formatResult(resultValue),
-                pendingOperator = op,
+                pendingOperator = inputOp,
                 isNewEntry = true
             )
         }
         return state.copy(
             previousValue = state.displayValue,
-            pendingOperator = op,
+            pendingOperator = inputOp,
             isNewEntry = true
         )
     }
