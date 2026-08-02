@@ -134,10 +134,11 @@ fun ButtonGrid(viewModel: CalculatorViewModel) {
             ) {
                 row.forEach { buttonData ->
                     val span = buttonData.span
+                    val w = if (span == 2) 2f else 1f
                     CalculatorButton(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .weight(if (span == 2) 2f else 1f),
+                            .weight(w),
                         text = buttonData.text,
                         type = buttonData.type,
                         onClick = { viewModel.onInput(buttonData.input) }
