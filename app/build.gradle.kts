@@ -55,20 +55,25 @@ dependencies {
     val lifecycleVersion = "2.8.4"
     val activityComposeVersion = "1.9.3"
     val appcompatVersion = "1.7.0"
+    val lifecycleViewModelComposeVersion = "2.8.4"
+    val composeCompilerVersion = "1.5.11"
+    val composeBomVersion = "2024.06.00"
 
     implementation("androidx.core:core-ktx:$coreKtx")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleViewModelComposeVersion")
 
     // Material 3 / Compose BOM
-    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
+    val composeBom = platform("androidx.compose:compose-bom:$composeBomVersion")
     implementation(composeBom)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material3:material3-window-size-class")
+    implementation("androidx.compose.compiler:compiler:$composeCompilerVersion")
 
     // Window insets handling
     implementation("androidx.window:window:1.3.0")
