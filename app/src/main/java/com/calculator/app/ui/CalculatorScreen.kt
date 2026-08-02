@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.weight
+import androidx.compose.foundation.layout.WeightModifier
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -19,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextAlign
+import androidx.compose.ui.text.overflow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.calculator.app.R
 import com.calculator.app.logic.CalculatorEngine
+import com.calculator.app.logic.Operator
 import com.calculator.app.ui.theme.CalculatorTheme
 import com.calculator.app.ui.theme.calculatorColors
 
@@ -68,7 +71,7 @@ fun DisplayArea(viewModel: CalculatorViewModel) {
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.End,
                 maxLines = 1,
-                overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis
+                overflow = overflow.TextOverflow.Ellipsis
             )
         }
 
@@ -80,7 +83,7 @@ fun DisplayArea(viewModel: CalculatorViewModel) {
             fontWeight = FontWeight.W300,
             textAlign = TextAlign.End,
             maxLines = 1,
-            overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis
+            overflow = overflow.TextOverflow.Ellipsis
         )
     }
 }
@@ -92,25 +95,25 @@ fun ButtonGrid(viewModel: CalculatorViewModel) {
             ButtonData(stringResource(R.string.clear), ButtonType.FUNCTION, CalculatorEngine.CalculatorInput.CLEAR),
             ButtonData(stringResource(R.string.plus_minus), ButtonType.FUNCTION, CalculatorEngine.CalculatorInput.PLUS_MINUS),
             ButtonData(stringResource(R.string.percent), ButtonType.FUNCTION, CalculatorEngine.CalculatorInput.PERCENT),
-            ButtonData(stringResource(R.string.divide), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(com.calculator.app.logic.Operator.DIVIDE))
+            ButtonData(stringResource(R.string.divide), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(Operator.DIVIDE))
         ),
         listOf(
             ButtonData(stringResource(R.string.seven), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(7)),
             ButtonData(stringResource(R.string.eight), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(8)),
             ButtonData(stringResource(R.string.nine), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(9)),
-            ButtonData(stringResource(R.string.multiply), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(com.calculator.app.logic.Operator.MULTIPLY))
+            ButtonData(stringResource(R.string.multiply), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(Operator.MULTIPLY))
         ),
         listOf(
             ButtonData(stringResource(R.string.four), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(4)),
             ButtonData(stringResource(R.string.five), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(5)),
             ButtonData(stringResource(R.string.six), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(6)),
-            ButtonData(stringResource(R.string.subtract), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(com.calculator.app.logic.Operator.SUBTRACT))
+            ButtonData(stringResource(R.string.subtract), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(Operator.SUBTRACT))
         ),
         listOf(
             ButtonData(stringResource(R.string.one), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(1)),
             ButtonData(stringResource(R.string.two), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(2)),
             ButtonData(stringResource(R.string.three), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(3)),
-            ButtonData(stringResource(R.string.add), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(com.calculator.app.logic.Operator.ADD))
+            ButtonData(stringResource(R.string.add), ButtonType.OPERATOR, CalculatorEngine.CalculatorInput.Operator(Operator.ADD))
         ),
         listOf(
             ButtonData(stringResource(R.string.zero), ButtonType.NUMBER, CalculatorEngine.CalculatorInput.Digit(0), span = 2),
@@ -133,7 +136,7 @@ fun ButtonGrid(viewModel: CalculatorViewModel) {
                 row.forEach { buttonData ->
                     val weight = if (buttonData.span == 2) 2f else 1f
                     CalculatorButton(
-                        modifier = Modifier.weight(weight, fill = true),
+                        modifier = Modifier.weight(weight),
                         text = buttonData.text,
                         type = buttonData.type,
                         onClick = { viewModel.onInput(buttonData.input) }
