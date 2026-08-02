@@ -6,6 +6,7 @@ import com.calculator.app.logic.Operator.ADD
 import com.calculator.app.logic.Operator.DIVIDE
 import com.calculator.app.logic.Operator.MULTIPLY
 import com.calculator.app.logic.Operator.SUBTRACT
+import kotlin.math.abs
 
 object CalculatorEngine {
 
@@ -55,7 +56,7 @@ object CalculatorEngine {
         return state
     }
 
-    private fun handleOperator(state: Ready, operator: Operator): Ready {
+    private fun handleOperator(state: Ready, operator: CalculatorInput.Operator): Ready {
         if (state.pendingOperator != null && state.previousValue != null && state.isNewEntry.not()) {
             // Chain operations: calculate previous first
             val result = calculate(
@@ -65,15 +66,15 @@ object CalculatorEngine {
             )
             if (result is Error) return result
             return Ready(
-                displayValue = formatResult(result),
-                previousValue = formatResult(result),
-                pendingOperator = operator,
+                displayValue = formatResult(result.displayValue.toDoubleOrNull()!!),
+                previousValue = formatResult(result.displayValue.toDoubleOrNull()!!),
+                pendingOperator = operator.operator,
                 isNewEntry = true
             )
         }
         return state.copy(
             previousValue = state.displayValue,
-            pendingOperator = operator,
+            pendingOperator = operator.operator,
             isNewEntry = true
         )
     }
@@ -83,7 +84,7 @@ object CalculatorEngine {
             val result = calculate(state.previousValue!!, state.displayValue, state.pendingOperator!!)
             if (result is Error) return result
             return Ready(
-                displayValue = formatResult(result),
+                displayValue = formatResult(result.displayValue.toDoubleOrNull()!!),
                 previousValue = null,
                 pendingOperator = null,
                 isNewEntry = true
@@ -124,7 +125,7 @@ object CalculatorEngine {
         if (result.isInfinite() || result.isNaN()) {
             return Error("Error: Desbordamiento")
         }
-        if (result.absoluteValue > 1e12) {
+        if (abs(result) > 1e12) {
             return Error("Error: Desbordamiento")
         }
 
@@ -132,9 +133,9 @@ object CalculatorEngine {
     }
 
     private fun formatResult(value: Double): String {
-        if (value == value.toLong()) {
+        if (value == value.toLong().toDouble()) {
             val longVal = value.toLong()
-            return if (longVal.absoluteValue >= 1e12) {
+            return if (abs(longVal) >= 1e12) {
                 String.format("%.2e", value)
             } else {
                 longVal.toString()

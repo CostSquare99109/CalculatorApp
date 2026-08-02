@@ -47,8 +47,4 @@ data class CalculatorColorPalette(
 )
 
 val ColorScheme.calculatorColors: CalculatorColorPalette
-    get() = if (this == androidx.compose.material3.darkColorScheme(
-        primary = Color.Black,
-        surface = Color.Black,
-        background = Color.Black
-    )) CalculatorColors.dark else CalculatorColors.light
+    get() = if (this.isDark) CalculatorColors.dark else CalculatorColors.light

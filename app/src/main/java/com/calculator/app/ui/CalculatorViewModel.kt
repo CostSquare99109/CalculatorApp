@@ -19,15 +19,21 @@ class CalculatorViewModel : ViewModel() {
     }
 
     val displayValue: String
-        get() = when (state) {
-            is Ready -> state.displayValue
-            is Error -> state.message
+        get() {
+            val currentState = state
+            return when (currentState) {
+                is Ready -> currentState.displayValue
+                is Error -> currentState.message
+            }
         }
 
     val secondaryDisplay: String?
-        get() = when (state) {
-            is Ready -> buildSecondaryDisplay(state)
-            is Error -> null
+        get() {
+            val currentState = state
+            return when (currentState) {
+                is Ready -> buildSecondaryDisplay(currentState)
+                is Error -> null
+            }
         }
 
     private fun buildSecondaryDisplay(state: Ready): String? {
