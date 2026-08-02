@@ -58,7 +58,6 @@ object CalculatorEngine {
 
     private fun handleOperator(state: Ready, inputOp: Operator): Ready {
         if (state.pendingOperator != null && state.previousValue != null && state.isNewEntry.not()) {
-            // Chain operations: calculate previous first
             val result = calculate(
                 state.previousValue!!,
                 state.displayValue,
@@ -143,7 +142,6 @@ object CalculatorEngine {
                 longVal.toString()
             }
         }
-        // Decimal - limit decimal places
         val formatted = String.format("%.10f", value).replace(Regex("0+$"), "").replace(Regex("\\.$"), "")
         return if (formatted.length > MAX_DIGITS) {
             String.format("%.${MAX_DIGITS - 1}e", value)

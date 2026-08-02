@@ -47,4 +47,4 @@ data class CalculatorColorPalette(
 )
 
 val ColorScheme.calculatorColors: CalculatorColorPalette
-    get() = if (this.isDark) CalculatorColors.dark else CalculatorColors.light
+    get() = if (this.luminance() < 0.5) CalculatorColors.dark else CalculatorColors.light
