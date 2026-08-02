@@ -1,0 +1,50 @@
+<resources>
+    <!-- Dark theme colors -->
+    <color name="primary">#FFB499</color>
+    <color name="primaryContainer">#4D2000</color>
+    <color name="onPrimary">#1A0D00</color>
+    <color name="onPrimaryContainer">#FFE5D9</color>
+
+    <color name="secondary">#C4C2E0</color>
+    <color name="secondaryContainer">#32324E</color>
+    <color name="onSecondary">#0C0C26</color>
+    <color name="onSecondaryContainer">#E0E0E8</color>
+
+    <color name="tertiary">#99D9E0</color>
+    <color name="tertiaryContainer">#00383C</color>
+    <color name="onTertiary">#001E20</color>
+    <color name="onTertiaryContainer">#D4F1F4</color>
+
+    <color name="error">#FFB4AB</color>
+    <color name="errorContainer">#690005</color>
+    <color name="onError">#370001</color>
+    <color name="onErrorContainer">#FFDAD6</color>
+
+    <color name="surface">#1D1B20</color>
+    <color name="surfaceVariant">#49454F</color>
+    <color name="onSurface">#E5E1E6</color>
+    <color name="onSurfaceVariant">#CAC4D0</color>
+
+    <color name="background">#1D1B20</color>
+    <color name="onBackground">#E5E1E6</color>
+
+    <color name="outline">#938F99</color>
+    <color name="outlineVariant">#49454F</color>
+
+    <color name="inverseSurface">#E5E1E6</color>
+    <color name="inverseOnSurface">#322F35</color>
+    <color name="inversePrimary">#FF6B35</color>
+
+    <!-- Calculator specific colors (dark) -->
+    <color name="btn_number_bg">#2D2B30</color>
+    <color name="btn_number_text">#E5E1E6</color>
+    <color name="btn_operator_bg">#FF6B35</color>
+    <color name="btn_operator_text">#FFFFFF</color>
+    <color name="btn_function_bg">#3A3844</color>
+    <color name="btn_function_text">#C4C2E0</color>
+    <color name="btn_equals_bg">#006D77</color>
+    <color name="btn_equals_text">#FFFFFF</color>
+    <color name="display_bg">#1D1B20</color>
+    <color name="display_text">#E5E1E6</color>
+    <color name="display_secondary_text">#938F99</color>
+</resources>
