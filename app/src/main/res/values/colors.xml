@@ -47,6 +47,4 @@
     <color name="display_bg">#FFFBFE</color>
     <color name="display_text">#1D1B20</color>
     <color name="display_secondary_text">#79747E</color>
-
-    <!-- Dark theme colors (will be overridden in values-night) -->
 </resources>
