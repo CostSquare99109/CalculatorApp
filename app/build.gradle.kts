@@ -54,10 +54,12 @@ dependencies {
     val coreKtx = "1.13.1"
     val lifecycleVersion = "2.8.4"
     val activityComposeVersion = "1.9.3"
+    val appcompatVersion = "1.7.0"
 
     implementation("androidx.core:core-ktx:$coreKtx")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
+    implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
     // Material 3 / Compose BOM
     val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
