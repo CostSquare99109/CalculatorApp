@@ -24,7 +24,7 @@ object CalculatorEngine {
         return when (input) {
             is CalculatorInput.Digit -> handleDigit(state, input.digit)
             is CalculatorInput.Decimal -> handleDecimal(state)
-            is CalculatorInput.Operator -> handleOperator(state, input.operator)
+            is CalculatorInput.Operator -> handleOperator(state, input.operator.operator)
             is CalculatorInput.Equals -> handleEquals(state)
             CalculatorInput.CLEAR -> Ready("0")
             CalculatorInput.CLEAR_ENTRY -> Ready("0", state.previousValue, state.pendingOperator, false)
