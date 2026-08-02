@@ -24,6 +24,7 @@ import androidx.compose.ui.text.overflow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.aspectRatio
 import com.calculator.app.R
 import com.calculator.app.logic.CalculatorEngine
 import com.calculator.app.logic.Operator
