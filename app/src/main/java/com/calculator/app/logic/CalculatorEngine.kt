@@ -65,7 +65,7 @@ object CalculatorEngine {
                 state.pendingOperator!!
             )
             if (result is Error) return result
-            val resultValue = result.displayValue.toDoubleOrNull()!!
+            val resultValue = (result as Ready).displayValue.toDoubleOrNull()!!
             return Ready(
                 displayValue = formatResult(resultValue),
                 previousValue = formatResult(resultValue),
@@ -84,7 +84,7 @@ object CalculatorEngine {
         if (state.pendingOperator != null && state.previousValue != null) {
             val result = calculate(state.previousValue!!, state.displayValue, state.pendingOperator!!)
             if (result is Error) return result
-            val resultValue = result.displayValue.toDoubleOrNull()!!
+            val resultValue = (result as Ready).displayValue.toDoubleOrNull()!!
             return Ready(
                 displayValue = formatResult(resultValue),
                 previousValue = null,
